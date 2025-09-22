@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Travel Smart — Feedback</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/747f67b7cc.js" crossorigin="anonymous"></script>
+</head>
+<style>
+  .btnfeed{background:var(--accent);color:#fff;padding:10px 12px;border-radius:8px;border:0;cursor:pointer}
+  .btnfeed:hover{
+    background:var(--accent);color:#fff;padding:10px 12px;border-radius:8px;border:0;cursor:pointer;background-color: #0056b3;}
+</style>
+
+<body>
+  <header class="header">
+    <div class="container inner">
+      <div class="logo" onclick="location.href='index.html'"><div class="icon">TS</div><div>TRAVEL <strong>SMART</strong></div></div>
+      <nav class="nav"><a class="btn" href="catalog.html">Destinations</a><a class="btn" href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:22px">
+    <section class="card">
+      <h2 style="margin-top:0">Website Feedback</h2>
+      <p class="small">Your feedback helps us improve.</p>
+
+      <form id="feedbackForm">
+        <input type="text" id="fbName" placeholder="Your name" required>
+        <input type="email" id="fbEmail" placeholder="Your email" required>
+        <textarea id="fbMessage" placeholder="Your feedback" rows="4" required></textarea>
+        <button class="btnfeed" type="submit">Submit Feedback</button>
+      </form>
+
+      <div id="fbResult" class="small" style="margin-top:10px"></div>
+    </section>
+  </main>
+
+<footer class="footer" style="margin-top: 87px;">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Find us</h4>
+                <p>📍 office number 32 model colony karachi</p>
+                <p>📞 +92-9999878398</p>
+                <p>✉️ travel@smart.com.pk</p>
+            </div>
+            
+            
+            <div class="footer-section">
+                <h4>Follow us</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i>  TravelSmart123</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i>  Travel_Smart</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="catalog.html">Destinations</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="review.html">Review</a>
+            <p>Copyright ©2025 | Designed by M & M | Privcy Policy</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/home/?originalSubdomain=pk" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('fbName').value;
+      document.getElementById('fbResult').textContent = `Thanks ${name}! Your feedback (demo) was received.`;
+      e.target.reset();
+      setTimeout(()=>document.getElementById('fbResult').textContent='',3500);
+    });
+  </script>
+</body>
+</html>

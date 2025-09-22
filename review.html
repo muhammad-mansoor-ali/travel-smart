@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Travel Smart — Reviews</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/747f67b7cc.js" crossorigin="anonymous"></script>
+</head>
+<style>
+  .container {
+            text-align: center;
+            padding: 20px;
+            background-image: url('https://via.placeholder.com/800x400'); /* Replace with actual image URL */
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .testimonial {
+            font-style: italic;
+            color: #666;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        .author {
+            font-weight: bold;
+            color: #444;
+            margin-top: 5px;
+        }
+        
+          .btnfeed{background:var(--accent);color:#fff;padding:10px 12px;border-radius:8px;border:0;cursor:pointer}
+  .btnfeed:hover{
+    background:var(--accent);color:#fff;padding:10px 12px;border-radius:8px;border:0;cursor:pointer;background-color: #0056b3;}
+
+    
+
+</style>
+<body>
+  <header class="header">
+    <div class="container inner">
+      <div class="logo" onclick="location.href='index.html'"><div class="icon">TS</div><div>TRAVEL <strong>SMART</strong></div></div>
+      <nav class="nav"><a class="btn" href="catalog.html">Destinations</a><a class="btn" href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:22px">
+    <section class="card">
+      <h2 style="margin-top:0">Package Tour Review</h2>
+      <p class="small">Leave a review for a package.</p>
+
+      <form id="reviewForm">
+        <label for="reviewsList">Choose a package:</label>
+          <select id="reviewPackage" name="reviewPackage">
+            <option value="beach paradise">Beach Paradise</option>
+            <option value="mountain adventure">Mountain Adventure</option>
+            <option value="desert Safari">Desert Safari</option>
+            <option value="maldivesbeach">Maldives Beach</option>
+            <option value="Costa rica">Costa Rica</option>
+            <option value="Paris City">Paris City</option>
+            <option value="Tokyo">Tokyo</option>
+            <option value="antartic desert">Antartic Desert</option>
+          </select>
+        
+        <label>Rating
+          <select id="reviewRating">
+            <option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option><option value="3">⭐⭐⭐</option><option value="2">⭐⭐</option><option value="1">⭐</option>
+          </select>
+        </label>
+        <textarea id="reviewText" placeholder="Write your review here" rows="4" required></textarea>
+        <button class="btnfeed" type="submit">Post Review</button>
+      </form>
+
+      <div id="reviewsList" style="margin-top:14px"></div>
+    </section>
+    <div class="card" style="margin-top: 20px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+      <div id="feedback"></div>
+        <h1>What Our Travelers Say</h1>
+        <div class="testimonial">"Travel Smart made my trip to Paris unforgettable! The itinerary was perfect, and the support was amazing."</div>
+        <div class="author">- Hania Amir</div>
+        <hr>
+        <div class="testimonial">"maldives was a dream come true, thanks to Travel Smart. Highly recommend their packages!"</div>
+        <div class="author">- Ali Khan</div>
+        </div>
+    </div>
+  </main>
+
+<footer class="footer" style="margin-top: 87px;">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Find us</h4>
+                <p>📍 office number 32 model colony karachi</p>
+                <p>📞 +92-9999878398</p>
+                <p>✉️ travel@smart.com.pk</p>
+            </div>
+            
+            
+            <div class="footer-section">
+                <h4>Follow us</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i>  TravelSmart123</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i>  Travel_Smart</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="catalog.html">Destinations</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="review.html">Review</a>
+            <!-- <a href="test.html">testing</a> -->
+           <p>Copyright ©2025 | Designed by M & M | Privcy Policy</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/home/?originalSubdomain=pk" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    // populate package select
+    const sel = document.getElementById('reviewPackage');
+    (window.TRAVEL_DATA||[]).forEach(p=>{ const o=document.createElement('option'); o.value=p.id; o.textContent=p.name; sel.appendChild(o); });
+
+    const reviewsList = document.getElementById('reviewsList');
+    function renderLocalReviews(){
+      reviewsList.innerHTML = '';
+      const keys = Object.keys(window.REVIEWS || {});
+      if(keys.length===0){ reviewsList.innerHTML = '<div class="small">No reviews yet.</div>'; return; }
+      keys.forEach(k=>{
+        const p = (window.TRAVEL_DATA||[]).find(x=>x.id==k);
+        const arr = window.REVIEWS[k]||[];
+        const box = document.createElement('div'); box.style.marginBottom='12px';
+        box.innerHTML = `<h4 style="margin:6px 0">Reviews for ${p.name}</h4>`;
+        arr.forEach(r=>{
+          const d = document.createElement('div'); d.className='card'; d.style.marginBottom='8px';
+          d.innerHTML = `<div style="font-weight:700">${'⭐'.repeat(r.rating)} <span class="small">${r.date}</span></div><div style="margin-top:8px">${r.text}</div>`;
+          box.appendChild(d);
+        });
+        reviewsList.appendChild(box);
+      });
+    }
+
+    document.getElementById('reviewForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      const pid = document.getElementById('reviewPackage').value;
+      const rating = Number(document.getElementById('reviewRating').value);
+      const text = document.getElementById('reviewText').value;
+      window.postReview(pid, rating, text);
+      document.getElementById('reviewText').value='';
+      renderLocalReviews();
+      alert('Thanks — your review was posted (demo, local only).');
+    });
+
+    // init view
+    renderLocalReviews();
+  </script>
+</body>
+</html>

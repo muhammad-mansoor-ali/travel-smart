@@ -1,0 +1,524 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Travel Smart — Catalog</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/747f67b7cc.js" crossorigin="anonymous"></script>
+  
+  <style>
+   
+          main{
+            
+            border-radius: 20px;
+            height: 400px;
+          }
+          #pagemain
+          {
+            height: 100%;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            justify-content: center;
+           
+          }
+          #cardbox1{
+            width: 100%;
+            display: flex;
+            height: 400px;
+            
+            justify-content: space-between;
+            /* margin-left: 240px; */
+          }
+          #cardbox2{
+            width: 100%;
+            display: flex;
+            height: 400px;
+            
+            justify-content: space-between;
+          }
+          #maxpriceinp{
+            display: flex;
+            justify-content: left;
+          }
+          .cardfilters{
+            background-color: white;
+            border: solid transparent ;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 12px;
+          }
+
+          #cardalignment{
+            display: flex;
+            justify-content: space-around;
+          }
+        .card {
+            background: white;
+            border-radius: 10px;
+           box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+            width: 300px;
+            text-align: center;
+            padding: 10px;
+            /* height: 100px; */
+            /* margin-top: 20px; */
+            margin: 20px;
+        }
+
+        .card:hover{
+          transform:translateY(-6px)
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+        .card h3 {
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+        .card p {
+            color: #27ae60;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .card .stars {
+            color: #f1c40f;
+            margin: 5px 0;
+        }
+        .card button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card button:hover {
+            background-color: #2980b9;
+        }
+        .details {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 400px;
+            text-align: left;
+        }
+        .details img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .details h2 {
+            color: #2c3e50;
+            margin-top: 10px;
+        }
+        .details p {
+            color: #7f8c8d;
+            margin: 10px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .book-btn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .book-btn:hover {
+            background-color: #27ae60;
+        }
+        .close-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+            font-size: 18px;
+            line-height: 1;
+        }
+        .close-btn:hover {
+            background-color: #c0392b;
+        }
+        .layout{
+          width: 100%;
+          height: 400px;
+        }
+        
+    </style>
+</head>
+<header class="header">
+    <div class="container inner">
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="icon">TS</div><div>TRAVEL <strong>SMART</strong></div>
+      </div>
+      <nav class="nav">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="about.html">About Us</a>
+        <a class="btn" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+    <main class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px">
+      <div>
+        <h2 style="margin:0">Destinations</h2>
+        <div id="catalogInfo" class="small"></div>
+      </div>
+      <div class="row">
+        <input id="catalogSearch" placeholder="Search within catalog..." oninput="renderCatalog()" style="padding:8px;border-radius:8px;border:1px solid #e6eef0">
+        <a class="btn" href="catalog.html">Reset</a>
+      </div>
+    </div>
+
+    <div id="contentbox">
+      <aside class="cardfilters">
+        <h3 style="margin-top:0">Filters</h3>
+        <label>Category
+          <select id="filterType" onchange="renderCatalog()" style="width: 100%;">
+            <option value="all">All</option>
+            <option value="beach">Beach</option>
+            <option value="mountain">Mountain</option>
+            <option value="city">City</option>
+            <option value="adventure">Adventure</option>
+          </select>
+        </label>
+        <br>
+        <!-- <div id="maxpriceinp"> -->
+          <!-- <div id="maxpriceinp1"> -->
+        <label>Max price (USD)
+          <input id="filterMaxPrice" type="text" placeholder="e.g. 1000" oninput="renderCatalog()" style="width: 99%; margin-left: 15px;">
+        </label>
+        <br>
+        <label>Minimum rating
+          <select id="filterMinRating" onchange="renderCatalog()" style="width: 100%;">
+            <option value="0">Any</option>
+            <option value="3">3+</option>
+            <option value="4">4+</option>
+            <option value="4.5">4.5+</option>
+          </select>
+        </label>
+<br>
+        
+        <label>Sort
+          <select id="sortBy" onchange="renderCatalog()" style="width: 100%;">
+            <option value="popular">Most Popular</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="alpha">A → Z</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </label>
+        </div>
+      </aside>
+<body>
+
+      <section>
+        <div id="catalogGrid" class="catalog-grid" style="margin-top:6px"></div>
+      </section>
+    </div>
+  </main> 
+  <div id="cardalignment">
+    <div id="pagemain">
+    <div id="cardbox1">
+     <div class="card">
+        <img src="beach.jpeg" alt="Beach Paradise" style="height: 170px;">
+        <h3>Beach Paradise</h3>
+        <p>$499</p>
+        <div class="stars">★★★★☆</div>
+        <button onclick="showDetails('beach')">View Details</button>
+    </div>
+    <div class="card">
+        <img src="mountain.jpg" alt="Mountain Adventure" style="height: 170px;">
+        <h3>Mountain Adventure</h3>
+        <p>$650</p>
+        <div class="stars">★★★★☆</div>
+        <button onclick="showDetails('mountain')">View Details</button>
+    </div>
+    <div class="card">
+        <img src="desertsafari.jpg" alt="Desert Safari" style="height: 170px;">
+        <h3>Desert Safari</h3>
+        <p>$420</p>
+        <div class="stars">★★★★☆</div>
+        <button onclick="showDetails('desert')">View Details</button>
+    </div>
+    <div class="card">
+        <img src="maldivesbeach.jpg" alt="Maldives Beach" style="height: 170px;">
+        <h3>Maldives Beach</h3>
+        <p>$530</p>
+        <div class="stars">★★★☆☆</div>
+        <button onclick="showDetails('maldives')">View Details</button>
+        </div>
+      </div>
+
+      <div id="cardbox2">
+        <div class="card">
+        <img src="rica.avif" alt="Costa Rica" style="height: 170px;">
+        <h3>Costa Rica</h3>
+        <p>$470</p>
+        <div class="stars">★★★☆☆</div>
+        <button onclick="showDetails('rica')">View Details</button>
+        </div>
+
+        <div class="card">
+        <img src="paris.jpeg" alt="Paris City" style="height: 170px;">
+        <h3>Paris City</h3>
+        <p>$999</p>
+        <div class="stars">★★★☆☆</div>
+        <button onclick="showDetails('city')">View Details</button>
+        </div>
+
+         <div class="card">
+        <img src="tokyo.jpg" alt="Tokyo" style="height: 170px;">
+        <h3>Tokyo</h3>
+        <p>$780</p>
+        <div class="stars">★★★★☆</div>
+        <button onclick="showDetails('Tokyo')">View Details</button>
+    </div>
+     <div class="card">
+        <img src="antartic desert.jpg" alt="antartic desert" style="height: 170px;">
+        <h3>Antartic Desert</h3>
+        <p>$789</p>
+        <div class="stars">★★★★☆</div>
+        <button onclick="showDetails('antartic')">View Details</button>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+    
+    <div id="details" class="details">
+        <button class="close-btn" onclick="hideDetails()">×</button>
+        <!-- <img id="detail-image" src="" alt="details Image" style="box-sizing: border-box;"> -->
+        <h2 id="detail-title"></h2>
+        <p id="detail-description"></p>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter FullName">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Enter Phone Number">
+        </div>
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <button class="book-btn" onclick="bookNow()">Book Me</button>
+    </div>
+
+    <script>
+        function showDetails(type) {
+            const details = document.getElementById('details');
+            const title = document.getElementById('detail-title');
+            const description = document.getElementById('detail-description');
+            const image = document.getElementById('detail-image');
+
+            switch(type) {
+                case 'beach':
+                    title.textContent = 'Beach Paradise';
+                    description.textContent = 'Enjoy a relaxing getaway with pristine beaches and clear waters. Includes accommodation and meals for 5 days.';
+                    // image.src = 'https://via.placeholder.com/400x200?text=Beach+Paradise';
+                    break;
+                case 'mountain':
+                    title.textContent = 'Mountain Adventure';
+                    description.textContent = 'Experience thrilling hikes and stunning mountain views. Includes guided tours and gear for 4 days.';
+                    // image.src = 'https://via.placeholder.com/400x200?text=Mountain+Adventure';
+                    break;
+                case 'desert':
+                    title.textContent = 'Desert Safari';
+                    description.textContent = 'Explore the desert with dune bashing and camel rides. Includes overnight camping for 3 days.';
+                    // image.src = 'https://via.placeholder.com/400x200?text=Desert+Safari';
+                    break;
+                case 'maldives':
+                    title.textContent = 'Maldives Beach';
+                    description.textContent = 'Luxury beach resort with overwater bungalows. Includes spa and water sports for 6 days.';
+                    // image.src = 'https://via.placeholder.com/400x200?text=Maldives+Beach';
+                    break;
+                case 'rica':
+                    title.textContent = 'Costa Rica';
+                    description.textContent = 'Relax in paradise with amazing activities and vibrant culture for 5 days.';
+                    // image.src = 'https://via.placeholder.com/400x200?text=Maldives+Beach';
+                    break;
+                case 'city':
+                    title.textContent = 'Paris City';
+                    description.textContent = 'Experience the romance and Culture of the City of Light.';
+                    // image.src = 'https://via.placeholder.com/400x200?text=Maldives+Beach';
+                    break;
+                case 'Tokyo':
+                    title.textContent = 'Tokyo';
+                    description.textContent = 'Dive into the energy of the city that never sleeps.';
+                    // image.src = 'https://via.placeholder.com/400x200?text=Maldives+Beach';
+                    break;
+                case 'antartic':
+                    title.textContent = 'Antartic Desert';
+                    description.textContent = 'Antarctica: Explore the breathtaking beauty of Earth`s last great wilderness, a vast, icy desert teeming with unique wildlife and unforgettable adventures. ';
+                    // image.src = 'https://via.placeholder.com/400x200?text=Maldives+Beach';
+                    break;
+            }
+            details.style.display = 'block';
+        }
+
+        function hideDetails() {
+            document.getElementById('details').style.display = 'none';
+        }
+
+        function bookNow() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+
+            if (name && email && phone && date) {
+                alert(`Booking confirmed for ${name}! Details: Email: ${email}, Phone: ${phone}, Date: ${date}`);
+                hideDetails();
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('phone').value = '';
+                document.getElementById('date').value = '';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+    <footer class="footer" style="margin-top: 87px;">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Find us</h4>
+                <p>📍 office number 32 model colony karachi</p>
+                <p>📞 +92-9999878398</p>
+                <p>✉️ travel@smart.com.pk</p>
+            </div>
+            
+            
+            <div class="footer-section">
+                <h4>Follow us</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i>  TravelSmart123</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i>  Travel_Smart</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="catalog.html">Destinations</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="review.html">Review</a>
+           <p>Copyright ©2025 | Designed by M & M | Privcy Policy</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/home/?originalSubdomain=pk" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/site.js"></script>
+    <script>
+    function filterTours() {
+        const category = document.getElementById('categoryFilter').value;
+        const maxPrice = parseFloat(document.getElementById('priceFilter').value) || Infinity;
+        const minRating = parseFloat(document.getElementById('ratingFilter').value) || 0;
+        const sortBy = document.getElementById('sortFilter').value;
+
+        const tours = document.getElementsByClassName('tour-item');
+        Array.from(tours).forEach(tour => {
+            const tourCategory = tour.getAttribute('data-category');
+            const tourPrice = parseFloat(tour.getAttribute('data-price'));
+            const tourRating = parseFloat(tour.getAttribute('data-rating'));
+
+            // Filter by category
+            const categoryMatch = category === 'All' || tourCategory === category;
+            // Filter by price
+            const priceMatch = tourPrice <= maxPrice;
+            // Filter by rating
+            const ratingMatch = minRating === 0 || tourRating >= minRating;
+
+            // Apply filters
+            if (categoryMatch && priceMatch && ratingMatch) {
+                tour.style.display = 'inline-block';
+            } else {
+                tour.style.display = 'none';
+            }
+        });
+
+        // Sort tours
+        const visibleTours = Array.from(tours).filter(tour => tour.style.display !== 'none');
+        visibleTours.sort((a, b) => {
+            const aPrice = parseFloat(a.getAttribute('data-price'));
+            const bPrice = parseFloat(b.getAttribute('data-price'));
+            const aRating = parseFloat(a.getAttribute('data-rating'));
+            const bRating = parseFloat(b.getAttribute('data-rating'));
+            const aName = a.querySelector('h3').textContent;
+            const bName = b.querySelector('h3').textContent;
+
+            switch (sortBy) {
+                case 'priceLowHigh':
+                    return aPrice - bPrice;
+                case 'priceHighLow':
+                    return bPrice - aPrice;
+                case 'aToZ':
+                    return aName.localeCompare(bName);
+                case 'topRated':
+                    return bRating - aRating;
+                default:
+                    return 0; // Most Popular (no specific sorting)
+            }
+        });
+
+        // Re-append sorted tours
+        const toursContainer = document.getElementById('tours');
+        visibleTours.forEach(tour => toursContainer.appendChild(tour));
+    }
+
+    function resetFilters() {
+        document.getElementById('categoryFilter').value = 'All';
+        document.getElementById('priceFilter').value = '';
+        document.getElementById('ratingFilter').value = 'Any';
+        document.getElementById('sortFilter').value = 'popular';
+        filterTours(); // Apply reset filters
+    }
+
+    // Initial filter application
+    filterTours();
+</script></script>
+    </body>
+   </html> 
+  
+  
+  
+
+
+  
+

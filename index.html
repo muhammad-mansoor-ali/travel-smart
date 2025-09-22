@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Travel Smart — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/747f67b7cc.js" crossorigin="anonymous"></script>
+  <style>
+
+    li{
+      color: black;
+    }
+.slideshow-container {
+        width: 80%;
+        position: relative;
+        overflow: hidden;
+        margin-left: 50px;
+        
+    }
+    .slideshow {
+        display: flex;
+        transition: transform 0.5s ease;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .slide {
+        min-width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100px;
+        gap: 20px; /* Space between images */
+        margin-left: 30px;
+        border-radius: 25px;
+    }
+    .slide img {
+        max-height: 80px;
+        max-width: 180px;
+        object-fit: contain;
+        padding: 0; /* Removed padding to avoid extra space */
+        border-radius: 12px;
+    }
+    
+  </style>
+</head>
+<body background="home.jpg">
+  <header class="header">
+    <div class="container inner">
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="icon">TS</div><div>TRAVEL <strong>SMART</strong></div>
+      </div>
+      <nav class="nav">
+        <a class="btn" href="catalog.html">Destinations</a>
+        <a class="btn" href="about.html">About</a>
+        <a class="btn" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:20px">
+    <section class="hero" style="position:relative;">
+      <div class="content">
+        <h1>Find your next adventure with <span style="color:#fff;font-weight:800">Travel Smart</span></h1>
+        <p>Search tours, activities, and destinations</p>
+
+        <div class="searchbar" style="margin-top:18px;">
+          <input id="globalSearch" placeholder='Search (e.g. "beach", "trek", "Tokyo")'>
+          <button onclick="if(document.getElementById('globalSearch').value.trim()){ location.href='catalog.html?query='+encodeURIComponent(document.getElementById('globalSearch').value.trim()); }">Search</button>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:10px">
+          <a class="btn" href="catalog.html">Browse Catalog</a>
+          <a class="btn" href="feedback.html">Give Feedback</a>
+        </div>
+      </div>
+
+      <aside style="padding:28px; background-color:white;" class="card">
+        <h3 style="margin-top:0; color: black;">Featured packages:</h3>
+        <div class="small">Handpicked top tours for you</div>
+        <ul style="margin-top:12px">
+          <li><strong>Maldives Escape</strong> — 5 days • ⭐ 4.9</li>
+          <li><strong>Costa Rica</strong> — 7 days • ⭐ 4.8</li>
+          <li><strong>paris city</strong> — 5 days • ⭐ 4.7</li>
+        </ul>
+      </aside>
+    </section>
+
+    <br>
+    <h2 style=font-weight:bolder; color: #1a252f;>TRAVELLING PARTNERS</h2>
+    <br>
+    <div class="slideshow-container">
+    <div class="slideshow" id="slideshow">
+        <div class="slide">
+            <a href="https://www.uber.com/in/en/" target="_blank"><img src="uberlogo.png" alt="Partner 1"></a>
+            <a href="https://www.tcsexpress.com/" target="_blank"><img src="tcslogo.png" alt="Partner 2"></a>
+            <a href="https://www.piac.com.pk/" target="_blank"><img src="pialogo.png" alt="Partner 3"></a>
+        </div>
+        <div class="slide">
+            <a href="https://www.efulife.com/" target="_blank"><img src="efulogo.jpg" alt="Partner 4"></a>
+            <a href="https://www.flyjinnah.com/?gclsrc=aw.ds&gad_source=1&gad_campaignid=18663576626&gbraid=0AAAAAod6MNmYOvISOC8ZEAgV7S-cc3TgS&gclid=Cj0KCQjwzOvEBhDVARIsADHfJJRyMTnxnnpV-oNrjy79CYKc9xksUdiyTcqtuQ1NyTqF4f9pWfsG6jsaAoATEALw_wcB" target="_blank"><img src="flyjin.svg" alt="Partner 5"></a>
+            <a href="https://www.kainattravels.com/" target="_blank"><img src="kainat.jpg" alt="Partner 6"></a>
+        </div>
+
+        <div class="slide">
+            <a href="https://daewoo.com.pk/" target="_blank"><img src="daewoo.jpg" alt="Partner 7"></a>
+            <a href="https://www.kfcpakistan.com/" target="_blank"><img src="kfc.png" alt="Partner 8"></a>
+            <a href="https://mcdonalds.com.pk/" target="_blank"><img src="mcdonald.png" alt="Partner 9"></a>
+        </div>
+        <br><br>
+
+        
+    </div>
+</div>
+
+    <section style="margin-top:26px" class="card">
+      <h3>Why Travel Smart?</h3>
+      <p class="small">Easy search, filter and sort to find tours matching your budget and taste. Leave feedback and reviews.</p>
+    </section>
+  </main>
+
+    <footer class="footer" style="margin-top: 87px;">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Find us</h4>
+                <p>📍 office number 32 model colony karachi</p>
+                <p>📞 +92-9999878398</p>
+                <p>✉️ travel@smart.com.pk</p>
+            </div>
+            
+            
+            <div class="footer-section">
+                <h4>Follow us</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i>  TravelSmart123</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i>  Travel_Smart</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="catalog.html">Destinations</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="review.html">Review</a>
+            <p>Copyright ©2025 | Designed by M & M | Privcy Policy</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/home/?originalSubdomain=pk" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+   <script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+    const totalSlides = slides.length;
+
+    function showSlides() {
+        if (slideIndex >= totalSlides) slideIndex = 0;
+        if (slideIndex < 0) slideIndex = totalSlides - 1;
+        const offset = -slideIndex * 100;
+        document.getElementById("slideshow").style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextSlide() {
+        slideIndex++;
+        showSlides();
+    }
+
+    // Auto slide every 3 seconds
+    setInterval(nextSlide, 3000);
+
+    // Initial call to show the first slide
+    showSlides();
+</script>
+</body>
+</html>
+    

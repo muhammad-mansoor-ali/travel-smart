@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Travel Smart — Contact</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/747f67b7cc.js" crossorigin="anonymous"></script>
+  <style>
+    .btnfeed{background:var(--accent);color:#fff;padding:10px 12px;border-radius:8px;border:0;cursor:pointer}
+  .btnfeed:hover{
+    background:var(--accent);color:#fff;padding:10px 12px;border-radius:8px;border:0;cursor:pointer;background-color: #0056b3;}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container inner">
+      <div class="logo" onclick="location.href='index.html'"><div class="icon">TS</div><div>TRAVEL <strong>SMART</strong></div></div>
+      <nav class="nav"><a class="btn" href="catalog.html">Destinations</a><a class="btn" href="about.html">About</a><a class="btn" href="review.html">Review</a></nav>
+    </div>
+  </header>
+  <main class="container" style="padding-top:22px">
+    <section class="card">
+      <h1 style="margin-top:0">Contact Us</h1>
+      <p class="small">Email: <a href="mailto:info@travelsmart.example">info@travelsmart.com.pk</a> • Phone: +92 330 3537918</p>
+      <h4>Find us</h4>
+      <!-- <p class="small">Click button below to get your current coordinates.</p> -->
+      <div class="row">
+        <button class="btnfeed" onclick="getLocation()">Get location</button>
+        <div id="geoResult" class="small">No location yet</div>
+      </div>
+
+      <hr>
+      <h4>Contact form</h4>
+      <form onsubmit="event.preventDefault(); alert('Thanks — demo message received')">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Your email" required>
+        <textarea placeholder="Message" rows="4" required></textarea>
+        <button type="submit" class="btnfeed">Send</button>
+      </form>
+    </section>
+  </main>
+
+<footer class="footer" style="margin-top: 87px;">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Find us</h4>
+                <p>📍 office number 32 model colony karachi</p>
+                <p>📞 +92-9999878398</p>
+                <p>✉️ travel@smart.com.pk</p>
+            </div>
+            
+            
+            <div class="footer-section">
+                <h4>Follow us</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i>  TravelSmart123</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i>  Travel_Smart</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="catalog.html">Destinations</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="review.html">Review</a>
+            <p>Copyright ©2025 | Designed by M & M | Privcy Policy</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/home/?originalSubdomain=pk" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+    function getLocation(){
+      const out = document.getElementById('geoResult');
+      if(!navigator.geolocation) return out.textContent='Geolocation unsupported';
+      out.textContent = 'Requesting...';
+      navigator.geolocation.getCurrentPosition(pos=>{
+        out.textContent = `Lat: ${pos.coords.latitude.toFixed(4)}, Lng: ${pos.coords.longitude.toFixed(4)}`;
+      }, err => { out.textContent = 'Permission denied or unavailable.'; });
+    }
+  </script>
+</body>
+</html>
