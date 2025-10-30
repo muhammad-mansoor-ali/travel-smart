@@ -209,3 +209,157 @@ input[type=text],input[type=email],textarea,select{padding:10px;border-radius:8p
   }
 }
 
+/* Responsive tweaks specific to catalog.html elements */
+@media (max-width: 1200px) {
+  .layout { grid-template-columns: 280px 1fr; gap:16px; padding:18px 0; }
+  .cardfilters { padding:12px; }
+  #catalogGrid.catalog-grid { grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:14px; }
+  .tour-media { height:140px; }
+  .details-hero { height:280px; }
+}
+
+@media (max-width: 980px) {
+  /* Stack filters above grid and make everything fluid */
+  .layout { grid-template-columns: 1fr; padding:12px 0; }
+  .cardfilters { width:100%; margin-bottom:12px; }
+  #cardalignment { display:flex; flex-direction:column; gap:12px; align-items:center; }
+  #pagemain { width:100%; padding:0 8px; }
+  #cardbox1, #cardbox2 { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; height:auto !important; }
+  .card { width: calc(50% - 24px); max-width:420px; margin:8px; }
+  .catalog-grid{ grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:12px;}
+  .details { width: 90%; max-width:640px; }
+}
+
+@media (max-width: 768px) {
+  .card { width: calc(100% - 24px); margin:10px 0; }
+  .tour-media { height:120px; font-size:38px; }
+  .hero { padding:20px; border-radius:10px; }
+  .searchbar { flex-direction:column; align-items:stretch; }
+  .header .inner { padding:10px; gap:10px; }
+  .nav{ display:none; }
+  .details { position: fixed; left:50%; top:50%; transform:translate(-50%,-50%); max-height:90vh; overflow:auto; padding:14px; width:95%; }
+  .footer-container { padding: 0 12px; }
+}
+
+@media (max-width: 480px) {
+  :root { --maxw: 100%; }
+  html { font-size: 14px; }
+  .container { padding:8px; max-width:100%; }
+  .logo .icon { width:40px; height:40px; font-size:13px; }
+  .card { padding:12px; border-radius:10px; }
+  .tour-media { height:100px; font-size:32px; }
+  .catalog-grid { grid-template-columns: 1fr; gap:10px; }
+  #catalogSearch, .searchbar input { width: 100%; }
+  .row { flex-direction:column; gap:8px; align-items:stretch; }
+  footer .footer-container { flex-direction:column; gap:12px; align-items:center; text-align: center; }
+  main, .layout, #cardbox1, #cardbox2 { height: auto !important; }
+}
+
+/* ---------- Responsive improvements (added) ---------- */
+/* base responsive typography */
+html { font-size: clamp(14px, 1.4vw, 16px); }
+
+/* Make buttons scale and become full-width on small screens */
+.btn, .btnfeed, .book-btn, .close-btn, .nav a.btn {
+  display: inline-block;
+  font-size: clamp(13px, 1.6vw, 16px);
+  padding: clamp(8px, 1.2vw, 12px) clamp(10px, 2vw, 16px);
+  line-height: 1;
+  min-width: 86px;
+  box-sizing: border-box;
+}
+
+/* Utility: make any input/button take full width on narrow screens */
+.responsive-full, input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Slideshow responsiveness */
+.slideshow-container { width: 100%; max-width: 980px; margin: 8px auto; padding: 0 12px; }
+.slideshow { gap: 12px; }
+.slide { min-width: 100%; padding: 8px 4px; margin-left: 0; }
+.slide img { max-width: 32%; max-height: 64px; }
+
+/* Card alignment containers: become flexible and wrap */
+#cardalignment, #pagemain, #cardbox1, #cardbox2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Default card sizing: allow grid and flex contexts to control width */
+.card {
+  width: 100%;
+  max-width: 340px;
+  margin: 12px;
+  box-sizing: border-box;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+/* Catalog grid keeps responsive columns */
+.catalog-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+
+/* Ensure filter column becomes a horizontal card above content on narrow screens */
+.cardfilters { width: 100%; max-width: 360px; box-sizing: border-box; }
+
+/* Make details modal scrollable on small screens */
+.details { max-width: 700px; width: 95%; max-height: 90vh; overflow: auto; padding: 16px; }
+
+/* More compact variants for tiny screens */
+@media (max-width: 980px) {
+  .hero { padding: 20px; gap: 12px; }
+  .hero .content { padding: 20px; }
+  .searchbar { gap: 8px; }
+  .card { max-width: 420px; width: calc(50% - 28px); }
+  .slide img { max-width: 28%; max-height: 72px; }
+}
+
+/* Tablets & large phones */
+@media (max-width: 768px) {
+  .container { padding: 12px; }
+  .hero { grid-template-columns: 1fr; padding: 16px; border-radius: 10px; }
+  .header .inner { padding: 8px 6px; gap: 10px; }
+  .nav { display: none; } /* keep header compact */
+  .card { width: calc(100% - 24px); max-width: 760px; margin: 10px 0; }
+  .cardfilters { padding: 12px; }
+  .searchbar { flex-direction: column; align-items: stretch; }
+  .slide img { max-width: 30%; max-height: 60px; }
+  .btn, .btnfeed, .book-btn { width: 100%; text-align: center; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  :root { --maxw: 100%; }
+  html { font-size: 14px; }
+  .container { padding: 8px; }
+  .logo .icon { width: 40px; height: 40px; font-size: 13px; }
+  .hero .content { padding: 12px; }
+  .card { margin: 8px 0; padding: 12px; border-radius: 10px; width: 100%; max-width: 100%; }
+  .catalog-grid { grid-template-columns: 1fr; gap: 10px; }
+  #catalogSearch, .searchbar input { width: 100%; }
+  .row { flex-direction: column; gap: 8px; align-items: stretch; }
+  .slide { display: flex; gap: 8px; justify-content: space-between; }
+  .slide img { max-width: 30%; max-height: 56px; }
+  .btn, .btnfeed, .book-btn, .close-btn { width: 100%; display:block; padding: 10px; font-size: 15px; }
+  footer .footer-container { flex-direction: column; gap: 12px; align-items: center; text-align: center; }
+  main, .layout, #cardbox1, #cardbox2 { height: auto !important; }
+}
+
+/* Accessibility: focus states for interactive elements */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid rgba(14,165,161,0.18);
+  outline-offset: 2px;
+}
+
+/* Prevent images and media from overflowing fixed-size containers */
+img, video, iframe { max-width: 100%; height: auto; display: block; }
+
+/* Small visual polish */
+.card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(2,6,23,0.08); }
+
